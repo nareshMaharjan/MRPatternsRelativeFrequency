@@ -39,7 +39,7 @@ public class NumberPair extends TextPair{
 
     @Override
     public int hashCode() {
-        return first.hashCode() * 192 + second.hashCode();
+        return first.hashCode() * 13 + second.hashCode();
     }
 
     public Integer getNumPairKey(){

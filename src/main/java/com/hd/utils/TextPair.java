@@ -81,7 +81,7 @@ public class TextPair implements WritableComparable{
 
     @Override
     public int hashCode() {
-        return first.hashCode() * 198 + second.hashCode();
+        return first.hashCode() * 17 + second.hashCode();
     }
 
 
