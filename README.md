@@ -1,2 +1,2 @@
 # MRPatternsRelativeFrequency
-Map Reduce design patterns for calculating relative frequency
+Map Reduce design patterns(Pairs, Stripes and hybrid) for calculating relative frequency
