@@ -1,6 +1,7 @@
 package com.hd.crystalBall;
 
 import com.hd.utils.NumberPair;
+import org.apache.hadoop.io.DoubleWritable;
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.mapreduce.Reducer;
@@ -15,34 +16,29 @@ import java.util.Iterator;
  * Time: 11:23 PM
  * To change this template use File | Settings | File Templates.
  */
-public class RelFreqPairReducer extends Reducer<NumberPair, IntWritable,NumberPair,LongWritable> {
-    Long total=0l;
-    LongWritable relFreq;
+public class RelFreqPairReducer extends Reducer<NumberPair, IntWritable,NumberPair,DoubleWritable> {
+    Double total=0d;
+    DoubleWritable relFreq;
 
     @Override
     public void setup(Context context){
-        relFreq=new LongWritable(0);
+//        total=0l;
+        relFreq=new DoubleWritable(0);
 
     }
 
     @Override
     public void reduce(NumberPair keyin, Iterable<IntWritable> valuein, Context context) throws IOException, InterruptedException {
-        Long sum = 0l;
+        Double sum = 0d;
         Iterator<IntWritable> iter = valuein.iterator();
         System.out.println("key in:::: "+keyin);
 
         while (iter.hasNext()) {
-
             sum += iter.next().get();
-
         }
-
-
         if(keyin.getSecond().toString().equals("*")){
-
             total=sum;
         } else {
-
             relFreq.set(sum/total);
             context.write(keyin, relFreq);
         }

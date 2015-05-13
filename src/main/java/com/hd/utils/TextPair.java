@@ -60,12 +60,12 @@ public class TextPair implements WritableComparable{
         second.write(out);
     }
 
-    private String getKey(){
+    public String getKey(){
        return first.toString();
 
     }
 
-    private String getValue(){
+    public String getValue(){
        return second.toString();
     }
 
@@ -79,7 +79,7 @@ public class TextPair implements WritableComparable{
             return cmp;
     }
 
-
+    @Override
     public int hashCode() {
         return first.hashCode() * 198 + second.hashCode();
     }
